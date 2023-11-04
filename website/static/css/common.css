@@ -1,0 +1,26 @@
+body::-webkit-scrollbar {
+    display: none;
+}
+.navbar-brand{
+    text-decoration: underline;
+    border-top: 5px dotted white;
+    border-bottom: 5px dotted white;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    background-color:  #27ee59;
+    color: #060606;
+    border-radius: 34px;
+    font-weight: 800;
+    padding: 4px 7px;
+}
+.navbar-Brand{
+    border-top: 5px dotted #27ee59;
+    border-bottom: 5px dotted #27ee59;
+    border-left: 2px solid #27ee59;
+    border-right: 2px solid #27ee59;
+    background-color:  #fafbfb;
+    color: #060606;
+    border-radius: 34px;
+    font-weight: 800;
+    padding: 4px 7px;
+}

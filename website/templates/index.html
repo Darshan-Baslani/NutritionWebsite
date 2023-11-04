@@ -1,0 +1,1176 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FIt Athlete</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="\static\common.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+        *,
+        *:after,
+        *:before {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :active,
+        :hover,
+        :focus {
+            outline: 0 !important;
+            outline-offset: 0;
+        }
+
+        a,
+        a:hover {
+            text-decoration: none;
+        }
+
+        /* a:hover {
+            color: var(--primary-color) !important;
+        } */
+
+        ul,
+        ol {
+            margin: 0;
+            padding: 0;
+        }
+
+        /===== Variable Define =====/
+        :root {
+            --primary-color: #27ee59;
+            --secondry-color: #43121d;
+            --third-color: #f98169;
+            --white-color: #fff;
+            --text-color: #555;
+            --text-gray: #999;
+            --black-color: #000;
+            --primary-font: 'Roboto', sans-serif;
+            --secondry-font: 'Quicksand', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--primary-font);
+            font-size: 100%;
+            font-weight: 400;
+        }
+
+        /*
+=========================================
+    Custom Scrollbar
+=========================================
+*/
+
+        ::-webkit-scrollbar {
+            width: 0.625rem;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--white-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+        }
+
+        /*
+==========================================
+   Custom CSS Design
+==========================================
+*/
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 3rem;
+            color: var(--secondry-color);
+        }
+
+        h2 {
+            font-weight: 700;
+            font-size: 2.25rem;
+            text-transform: capitalize;
+            font-family: var(--secondry-font);
+            color: var(--secondry-color);
+            line-height: 3rem;
+
+        }
+
+        h4 {
+            color: var(--secondry-color);
+            font-family: var(--secondry-font);
+            text-transform: capitalize;
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        h5 {
+            color: var(--primary-color);
+            text-transform: capitalize;
+            font-family: var(--secondry-font);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            font-size: 1rem;
+            color: var(--text-color);
+            font-weight: 400;
+            line-height: 1.75rem;
+            letter-spacing: 1px;
+        }
+
+        .main-btn {
+            display: inline-block;
+            padding: 0.625rem 1.875rem;
+            line-height: 1.5625rem;
+            background-color: var(--primary-color);
+            border: 0.1875rem solid var(--primary-color);
+            color: var(--white-color);
+            font-size: 0.9375rem;
+            font-weight: 600;
+            text-transform: capitalize;
+            box-shadow: 0px 2px 10px -1px rgb(0 0 0 / 19%);
+            -webkit-transition: all .4s ease-out 0s;
+            -o-transition: all .4s ease-out 0s;
+            -moz-transition: all .4s ease-out 0s;
+            transition: all .4s ease-out 0s;
+        }
+
+        .white-btn {
+            padding: 0.625rem 1.875rem;
+            line-height: 25px;
+            background-color: var(--white-color);
+            border: 0.1875rem solid var(--white-color);
+            color: var(--text-color);
+            font-size: 0.9375rem;
+            font-weight: 600;
+            text-transform: capitalize;
+            box-shadow: 0px 2px 10px -1px rgb(0 0 0 / 19%);
+            -webkit-transition: all .4s ease-out 0s;
+            -o-transition: all .4s ease-out 0s;
+            -moz-transition: all .4s ease-out 0s;
+            transition: all .4s ease-out 0s;
+        }
+
+        .main-btn:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+        }
+
+        .white-btn:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .wrapper {
+            padding-top: 8.25rem;
+            padding-bottom: 8.25rem;
+        }
+
+        .text-content {
+            width: 70%;
+            margin: auto;
+        }
+
+        .counter-section h2,
+        .testimonial-section h2,
+        .book-food-text h2 {
+            color: var(--white-color);
+        }
+
+        /*
+==========================================
+   Header Design
+==========================================
+*/
+        .navigation-wrap {
+            position: fixed;
+            width: 100%;
+            left: 0;
+            z-index: 1000;
+            -webkit-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+        }
+
+        .navigation-wrap .nav-item {
+            padding: 0 0.625rem;
+            transition: all 200ms linear;
+        }
+
+        .navbar-toggler:focus {
+            outline: unset;
+            border: unset;
+            box-shadow: none;
+        }
+
+        /* .nav-link {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            text-transform: capitalize;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+        } */
+
+        .navigation-wrap .main-btn {
+            padding: 0.3125rem 1.4375rem;
+            box-shadow: none;
+            margin-left: 0.625rem;
+        }
+
+        /* Change navbar styling on scroll */
+
+        .navigation-wrap.scroll-on {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--white-color);
+            box-shadow: 0 0.125rem 1.75rem 0 rgb(0, 0, 0, 0.09);
+            transition: all .15s ease-in-out 0s;
+        }
+
+
+
+        /*
+==========================================
+   top-banner Design
+==========================================
+*/
+        .top-banner {
+            width: 100%;
+            background: url('../images/bg/bg-1.jpg') no-repeat center;
+            background-size: cover;
+            padding: 16.875rem 0 9.375rem;
+        }
+
+
+
+        /*
+==========================================
+  counter Design
+==========================================
+*/
+        .counter-section {
+            background-color: var(--primary-color);
+            padding: 2.5rem 0;
+        }
+
+        .counter-section p {
+            color: var(--white-color);
+            text-transform: uppercase;
+        }
+
+
+        /*
+==========================================
+ about section Design
+==========================================
+*/
+        .about-section {
+            background: var(--white-color);
+        }
+
+        .about-section .card,
+        .about-section .card img {
+            border-radius: 0.625rem;
+        }
+
+        .about-section .text-sec {
+            padding-left: 2rem;
+        }
+
+        /*
+==========================================
+ food type section Design
+==========================================
+*/
+        .food-type {
+            padding-top: 3.25rem;
+        }
+
+        .food-type ul li {
+            font-size: 1rem;
+            color: var(--text-color);
+            line-height: 32px;
+            position: relative;
+            margin-left: 30px;
+        }
+
+        .food-type ul li::before {
+            position: absolute;
+            left: -2.1875rem;
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            font-family: "Font Awesome 5 Free";
+            content: '\f00c';
+            display: inline-block;
+            padding-right: 3px;
+            vertical-align: middle;
+            font-weight: 900;
+        }
+
+        .story-section {
+            width: 100%;
+            height: 28.125rem;
+            background: url('https://media.istockphoto.com/id/1170357618/photo/healthy-fresh-fruits-and-vegetables-shot-from-above-with-copy-space-at-the-center.jpg?s=612x612&w=0&k=20&c=oF0MBc5y3atr5x-0fUyDdVs7NfzdBYsQdX7oxMvMdvM=') no-repeat center;
+            background-size: 70vw 80vh;
+            padding-top: 100px;
+            text-align: center;
+        }
+
+        .story-section h2 {
+            color: var(--primary-color);
+        }
+
+        /*
+==========================================
+ explore food section Design
+==========================================
+*/
+        .explore-food .card {
+            border: none;
+            background-color: transparent;
+            border-radius: 0.9375rem;
+        }
+
+        .explore-food .card img {
+            border-radius: 0.9375rem;
+            object-fit: cover;
+        }
+
+        .explore-food .card span {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            padding-bottom: 1rem;
+            border-bottom: 0.0625rem solid #eee;
+        }
+
+        .explore-food .card span del {
+            color: var(--text-gray);
+            margin-left: 0.5rem;
+        }
+
+        /*
+==========================================
+ testimonial section Design
+==========================================
+*/
+        .testimonial-section {
+            background-color: var(--primary-color);
+        }
+
+        .testimonial-section .carousel-item {
+            margin-top: 3rem;
+            padding: 10rem 3.125rem;
+            background-color: var(--white-color);
+            border-radius: 0.9375rem;
+            text-align: center;
+        }
+
+        .testimonial-section .carousel-caption img {
+            width: 5rem;
+            height: 5rem;
+            border-radius: 50%;
+            padding: 0.3125rem;
+        }
+
+        .testimonial-section .carousel-item .carousel-caption p {
+            font-size: 1.3125rem;
+            line-height: 2.0625rem;
+            padding: 0 11% 0.625rem;
+        }
+
+        .testimonial-section .carousel-indicators {
+            bottom: -2.8125rem;
+        }
+
+        .testimonial-section .carousel-indicators button {
+            width: 15px;
+            height: 15px;
+            outline: none;
+            border-radius: 50%;
+            border: none;
+            margin-right: 1rem;
+            opacity: 0.2;
+        }
+
+        .testimonial-section .carousel-indicators button.active {
+            opacity: 1;
+        }
+
+
+        /*
+==========================================
+FAQ section Design
+==========================================
+*/
+        .faq h4 span {
+            color: var(--primary-color);
+            font-size: 1.875rem;
+            margin-right: 0.3125rem;
+        }
+
+        .book-food {
+            width: 100%;
+            background: url('https://www.sportsperformancebulletin.com/AcuCustom/Sitename/DAM/083/7869-basics.jpg') no-repeat center;
+            background-size: 100vw 100vh;
+            background-attachment: fixed;
+            background-position: center;
+            padding: 4.375rem 0
+        }
+
+        /* Form Control */
+        .newsletter {
+            width: 55%;
+            margin: 0 auto;
+        }
+
+        .newsletter .form-control {
+            height: 3.225rem;
+            padding: 0 1.25rem;
+            font-size: 0.875rem;
+            width: 100%;
+            border: none;
+            border-radius: 0;
+            background: transparent;
+            border: 0.1875rem solid var(--text-gray);
+            color: var(--black-color);
+            font-weight: 700;
+        }
+
+        .newsletter .form-control:hover,
+        .newsletter .form-control:focus {
+            outline: none;
+            box-shadow: none;
+            border-color: var(--primary-color);
+        }
+
+        /*
+==========================================
+footer section Design
+==========================================
+*/
+        .footer {
+            background: var(--primary-color);
+        }
+
+        .footer .footer-link {
+            font-size: 1rem;
+            color: var(--white-color);
+            padding: 0 1.875rem;
+        }
+
+        .footer .footer-link:hover {
+            color: var(--white-color) !important;
+        }
+
+        .footer a i {
+            font-size: 1.5rem;
+            color: var(--white-color);
+            padding: 0 1rem;
+        }
+
+        /* <!--===============
+Responsive Design===
+==============--> */
+        @media (max-width:1024px) {
+
+            /* about section */
+
+        }
+
+        @media (max-width: 991px) {
+
+            /*custom classes  */
+            .text-content {
+                width: 100%;
+            }
+
+
+            /* navbar brand */
+            .navigation-wrap .navbar-brand img {
+                height: 3.8125rem;
+            }
+
+            .navigation-wrap {
+                text-align: center;
+                background-color: var(--white-color);
+            }
+
+            .navigation-wrap .nav-link {
+                line-height: 1.875rem;
+            }
+
+            /* Banner Design */
+            .top-banner {
+                padding: 9.375rem 0 9.375rem;
+            }
+
+            /* carousel design */
+            .testimonial-section .carousel-item .carousel-caption p {
+                padding: 0;
+            }
+
+        }
+
+        @media (max-width: 767px) {
+
+            /* custom css */
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+                line-height: 2.0625rem;
+            }
+
+
+            /* top banner */
+            .top-banner {
+                padding: 10.875rem 0 9.375rem;
+            }
+
+
+            /* story section */
+            .story-section {
+                height: auto;
+                padding: 3rem 0;
+            }
+
+            #story_p {
+                padding: 0 !important;
+            }
+
+            .story-section {
+
+                background: white;
+            }
+
+            /* carousel design */
+            .testimonial-section .carousel-item {
+                padding: 11rem 3.125rem;
+            }
+
+            /* newslettar */
+            .newsletter {
+                width: 75%;
+            }
+
+            .newsletter .main-btn {
+                width: 100%;
+                margin-top: 1rem;
+            }
+
+            /* footer link */
+            .footer .footer-link,
+            .footer a i {
+                padding: 0 0.7rem;
+            }
+
+
+        }
+
+        @media (max-width:330px) {
+
+            /* carousel design */
+            .testimonial-section .carousel-item {
+                padding: 13rem 3.125rem;
+            }
+
+
+        }
+    </style>
+    <style>
+        ::-webkit-scrollbar {
+            width: 0.625rem;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: white;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border: 2px solid white;
+            background: #27ee59;
+        }
+
+        body {
+            font-family: ROBOTO;
+        }
+
+        nav {
+            font-family: "Nosifer", sans-serif !important;
+        }
+
+        .myfont {
+            font-family: ROBOTO !important;
+        }
+
+        .top-banner {
+            width: 100%;
+            height: 100%;
+            background-image: url("https://aavalabs.com/cdn/shop/articles/D_ental_Health_web_banner_2000x.jpg?v=1696839513");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            margin-top: 3.65rem;
+            padding: 1rem 0 9.375rem;
+        }
+
+        #nav {
+            background-color: #27ee59;
+        }
+
+        #lsbtn {
+            font-weight: 600;
+            border: 1px solid black
+        }
+
+        #lsbtn:hover {
+            background-color: white;
+            border: 1px solid rgb(254, 253, 253);
+        }
+
+        #Welcome {
+            font-size: 11vw;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width:750px) {
+            #Welcome {
+                font-size: 15vw;
+                margin-bottom: 3rem;
+            }
+        }
+
+        @media (max-width:420px) {}
+
+        @media (max-width:380px) {}
+
+        .navbar-Brand {
+            border-top: 5px dotted #27ee59;
+            border-bottom: 5px dotted #27ee59;
+            border-left: 2px solid #27ee59;
+            border-right: 2px solid #27ee59;
+            background-color: #fafbfb;
+            color: #060606;
+            border-radius: 34px;
+            font-weight: 800;
+            padding: 4px 7px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar Of Home Page  -->
+
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #27ee59;">
+        <div class="container-fluid">
+            <!-- logo -->
+            <a class="navbar-brand" href="#">Fit<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                    fill="currentColor" class="bi bi-bicycle" viewBox="0 0 16 16">
+                    <path
+                        d="M4 4.5a.5.5 0 0 1 .5-.5H6a.5.5 0 0 1 0 1v.5h4.14l.386-1.158A.5.5 0 0 1 11 4h1a.5.5 0 0 1 0 1h-.64l-.311.935.807 1.29a3 3 0 1 1-.848.53l-.508-.812-2.076 3.322A.5.5 0 0 1 8 10.5H5.959a3 3 0 1 1-1.815-3.274L5 5.856V5h-.5a.5.5 0 0 1-.5-.5zm1.5 2.443-.508.814c.5.444.85 1.054.967 1.743h1.139L5.5 6.943zM8 9.057 9.598 6.5H6.402L8 9.057zM4.937 9.5a1.997 1.997 0 0 0-.487-.877l-.548.877h1.035zM3.603 8.092A2 2 0 1 0 4.937 10.5H3a.5.5 0 0 1-.424-.765l1.027-1.643zm7.947.53a2 2 0 1 0 .848-.53l1.026 1.643a.5.5 0 1 1-.848.53L11.55 8.623z" />
+                </svg>Athlete</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Pages -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- Home Page -->
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" style="font-weight: 700;">Home</a>
+                    </li>                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#explore-food">Plans</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link">Contact</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq">FAQ</a>
+                    </li>
+                </ul>
+                <!-- LogIn And SignUp Buttons -->
+                <form class="d-flex" role="search">
+                    {% if user.is_authenticated %}
+
+                    <!-- Logout Button -->
+                    <button class="btn  me-4" id="lsbtn" type="submit"><a class="nav-link"
+                            href="/logout">Logout</a></button>
+
+                    {% else %}
+
+                    <!-- Login Button -->
+                    <button class="btn btn me-2" id="lsbtn" type="submit"><a class="nav-link"
+                            href="login.html">LogIn</a></button>
+                    <!-- SignUp Button -->
+                    <button class="btn  me-4" id="lsbtn" type="submit"><a class="nav-link"
+                            href="signup.html">SignUp</a></button>
+
+                    {% endif %}
+                </form>
+
+                <div class="col-1">
+                    <a href="profile.html" class="text-decoration-none " style="color: black;">
+                        <img src="data:image/jpeg;base64,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"
+                            alt="" style="height: 40px;border-radius: 22px;border: 2px solid blue;"> Profile
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- section-1 top-banner -->
+    <section id="home">
+        <div class="container-fluid px-0 top-banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-6">
+                        <h2 style="margin:1rem 0 1rem 0;">Welcome To </h2>
+                        <h1 style="margin-bottom: 1rem;"> Fit<svg xmlns="http://www.w3.org/2000/svg" width="50"
+                                height="50" fill="currentColor" class="bi bi-bicycle" viewBox="0 0 16 16">
+                                <path
+                                    d="M4 4.5a.5.5 0 0 1 .5-.5H6a.5.5 0 0 1 0 1v.5h4.14l.386-1.158A.5.5 0 0 1 11 4h1a.5.5 0 0 1 0 1h-.64l-.311.935.807 1.29a3 3 0 1 1-.848.53l-.508-.812-2.076 3.322A.5.5 0 0 1 8 10.5H5.959a3 3 0 1 1-1.815-3.274L5 5.856V5h-.5a.5.5 0 0 1-.5-.5zm1.5 2.443-.508.814c.5.444.85 1.054.967 1.743h1.139L5.5 6.943zM8 9.057 9.598 6.5H6.402L8 9.057zM4.937 9.5a1.997 1.997 0 0 0-.487-.877l-.548.877h1.035zM3.603 8.092A2 2 0 1 0 4.937 10.5H3a.5.5 0 0 1-.424-.765l1.027-1.643zm7.947.53a2 2 0 1 0 .848-.53l1.026 1.643a.5.5 0 1 1-.848.53L11.55 8.623z" />
+                            </svg>Athlete</h1>
+                        <h3>Where Champions Are Made.</h3>
+                        <p style="margin: 1rem 0 0 0 ;">At FitAthelete,</p>
+                        <p style="margin: 0;">we are dedicated to fueling</p>
+                        <p style="margin: 0;">The inner athlete in every individual.</p>
+                        <p style="margin: 0;">Unlock Your Potential with Personalized Training Programs.</p>
+                        <p style="margin: 0;">Nutrition Plans Tailored for Peak Performance.</p>
+                        <p style="margin: 0;">Join a Community of Like-Minded Athletes.</p>
+                        <div class="mt-4">
+                            <button class="main-btn">Log In <i class="fas fa-shopping-basket ps-3"></i></button>
+                            <button class="white-btn ms-lg-4 mt-lg-0 mt-4">SIgn Up<i
+                                    class="fas fa-angle-right ps-3"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- section-2 counter -->
+    <section id="counter">
+        <section class="counter-section ">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-3 mb-lg-0 mb-md-0 mb-5">
+                        <h2>
+                            <span id="count1"></span>+
+                        </h2>
+                        <p>WORKOUT</p>
+                    </div>
+                    <div class="col-md-3 mb-lg-0 mb-md-0 mb-5">
+                        <h2>
+                            <span id="count2"></span>+
+                        </h2>
+                        <p>USERS</p>
+                    </div>
+                    <div class="col-md-3 mb-lg-0 mb-md-0 mb-5">
+                        <h2>
+                            <span id="count3"></span>+
+                        </h2>
+                        <p>ATHELETS</p>
+                    </div>
+                    <div class="col-md-3 mb-lg-0 mb-md-0 mb-5">
+                        <h2>
+                            <span id="count4"></span>+
+                        </h2>
+                        <p>PLANS</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- section-3 about-->
+    <section id="about">
+        <div class="about-section wrapper">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-7 col-md-12 mb-lg-0 mb-5">
+                        <div class="card border-0">
+                            <img decoding="async"
+                                src="https://media.istockphoto.com/id/1409236261/photo/healthy-food-healthy-eating-background-fruit-vegetable-berry-vegetarian-eating-superfood.webp?b=1&s=170667a&w=0&k=20&c=KdkqtpvIHgiMk4ZEqlXDt53NjYYszTccGrnHJKkecF0="
+                                class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-12 text-sec">
+                        <h2>Understanding the Importance of Micronutrients in Your Diet.</h2>
+                        <p>Micronutrients, including vitamins and minerals, play a crucial role in supporting various
+                            bodily functions. Tracking your micronutrient you're meeting your daily nutritional needs
+                            and maintaining a balanced diet.</p>
+                        <button class="main-btn mt-4">Learn More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="container food-type">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-md-12 text-sec mb-lg-0 mb-5">
+                        <h2>"Reach Your Goals With FitAthlete: Unleash Your Inner Champion".</h2>
+                        <p>Experience the unparalleled benefits of our holistic approach to fitness, where we emphasize
+                            not only physical strength buto dominate the competition and triumph over any challenge.</p>
+                        <ul class="list-unstyled py-3">
+                            <li>Share Your Info To Track Nutrients.</li>
+                            <li>Learn what works.</li>
+                            <li>Change your habits and reach your goals.</li>
+                        </ul>
+                        <button class="main-btn mt-4">Learn More</button>
+                    </div>
+                    <div class="col-lg-7 col-md-12">
+                        <div class="card border-0">
+                            <img decoding="async"
+                                src="https://media.istockphoto.com/id/539441020/photo/man-runner-jogger-running-isolated.jpg?s=612x612&w=0&k=20&c=GcMJCKcl5jUOc701xG6fjBicpzcXKPOfGY-UFGGY4iI="
+                                class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- section-3 story-->
+    <section id="story">
+        <!-- style="border: 5px solid #27ee59;" -->
+
+        <div class="story-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="text-content">
+                            <h1 style="margin-bottom: 0; color: #27ee59;">Get your personalized </h1>
+                            <h2 style="margin-bottom: 0;">daily plan.</h2>
+                            <p id="story_p" style="margin-bottom: 0;padding: 0 125px;">Discover the power of a
+                                personalized daily plan designed exclusively for you. Maximize your potential and embark
+                                on a journey towards sustainable progress with a plan that evolves with you every step
+                                of the way.</p>
+                            <button class="main-btn mt-3">Get</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- section-4 explore food-->
+    <section id="explore-food">
+        <div class="explore-food wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="text-content text-center">
+                            <h2>Explore Our Plans & Prices</h2>
+                            <p>At FitAthlete, we offer a range of flexible plans designed to accommodate your specific
+                                fitness goals and requirements. Explore our diverse subscription options to find the
+                                perfect fit for your fitness journey.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pt-5">
+                    <div class="col-lg-4 col-md-6 mb-lg-0 mb-5">
+                        <div class="card">
+                            <img decoding="async" style="height: 400px;"
+                                src="https://images.pexels.com/photos/3490348/pexels-photo-3490348.jpeg?auto=compress&cs=tinysrgb&w=600"
+                                class="img-fluid">
+                            <div class="pt-3">
+                                <h4>Silver Membership</h4>
+                                <p>Data Tracking +2 More Features</p>
+                                <span>$09.50 <del>$11.70</del></span>
+                                <button class="mt-4 main-btn">Member Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-lg-0 mb-5">
+                        <div class="card">
+                            <img decoding="async" style="height: 400px;"
+                                src="https://images.pexels.com/photos/1431282/pexels-photo-1431282.jpeg?auto=compress&cs=tinysrgb&w=600"
+                                class="img-fluid">
+                            <div class="pt-3">
+                                <h4>Gold Membership</h4>
+                                <p>Workout Tracking +5 More Features</p>
+                                <span>$19.20<del>$30.50</del></span>
+                                <button class="mt-4 main-btn">Member Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-lg-0 mb-5">
+                        <div class="card">
+                            <img decoding="async" style="height: 400px;"
+                                src="https://images.pexels.com/photos/38630/bodybuilder-weight-training-stress-38630.jpeg?auto=compress&cs=tinysrgb&w=600"
+                                class="img-fluid">
+                            <div class="pt-3">
+                                <h4>VIP Membership</h4>
+                                <p>Customized workout +15 More Features</p>
+                                <span>$29.50<del>$50.20</del></span>
+                                <button class="mt-4 main-btn">Member Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section-5 testimonial-->
+    <section id="testimonial">
+        <div class="wrapper testimonial-section">
+            <div class="container text-center">
+                <div class="text-center pb-4">
+                    <h2>Nutrition tracking works, here's the proof</h2>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-lg-10 offset-lg-1">
+                        <div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0"
+                                    class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                                    aria-label="Slide 3"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="carousel-caption">
+                                        <img decoding="async"
+                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4aq6Pp3dbUvHa7ICjuqjB1h7qX8wU9upKaQ&usqp=CAU">
+                                        <p>"As a professional athlete,It's a for anyone serious about their athletic
+                                            performance."</p>
+                                        <h5>Johnthan Doe</h5>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="carousel-caption">
+                                        <img decoding="async"
+                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnUFh0ZdiDxZNUAvlbdfSLeDjb8fFXkhFcEg&usqp=CAU">
+                                        <p>"This app has completely transformed the way I approach my diet."
+                                        </p>
+                                        <h5>Tony Stark</h5>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="carousel-caption">
+                                        <img decoding="async"
+                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD8BxV-SDQVO_cSp9UCllPmi_OryJ3hcNjB8DQoCtlVUZL1HPB1Tz5XmucYgpErlNqjZU&usqp=CAU">
+                                        <p>"This app has become an indispensable tool in my quest for peak athletic
+                                            performance."</p>
+                                        <h5>Maccy Olsen</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- section-6 faq-->
+    <section id="faq">
+        <div class="faq wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="text-center pb-4">
+                            <h2>Frequently Asked Questions</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pt-5">
+                    <div class="col-sm-6 mb-4">
+                        <h4><span>~</span>What makes FitAthlete stand out from other nutrition tracking apps?</h4>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+                            there live the
+                            blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a
+                            large language.
+                        </p>
+                    </div>
+                    <div class="col-sm-6 mb-4">
+                        <h4><span>~</span>How accurate is the nutrition information provided by FitAthlete?</h4>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+                            there live the
+                            blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a
+                            large language.
+                        </p>
+                    </div>
+                    <div class="col-sm-6 mb-4">
+                        <h4><span>~</span>Can FitAthlete accommodate specific dietary preferences or restrictions?</h4>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+                            there live the
+                            blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a
+                            large language.
+                        </p>
+                    </div>
+                    <div class="col-sm-6 mb-4">
+                        <h4><span>~</span>Does FitAthlete offer guidance on meal planning and nutrition strategies?</h4>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+                            there live the
+                            blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a
+                            large language.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- section-7 book-food-->
+    <section id="book-food">
+        <div class="book-food">
+            <div class="container book-food-text">
+                <div class="row text-center">
+                    <div class="col-lg-9 col-md-12">
+                        <h1 style="color: #020202;">Reach your goals with FitAthelet.</h1>
+                    </div>
+                    <div class="col-lg-3 col-md-12 mt-lg-0 mt-4">
+                        <button class="main-btn">Learn more</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- section-8 newslettar-->
+    <section id="newslettar">
+        <div class="newslettar wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="sol-sm-12">
+                        <div class="text-content text-center pb-4">
+                            <h2>Hurry up! Subscribe our newsletter
+                                and get 25% Off</h2>
+                            <p>Limited time offer for this month. No credit card required. </p>
+                        </div>
+                        <form class="newsletter">
+                            <div class="row">
+                                <div class="col-md-8 col-12">
+                                    <input class="form-control" placeholder="Email Address here" name="email"
+                                        type="email">
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <button class="main-btn" type="submit">Subscribe</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- section-9 footer-->
+    <footer id="footer">
+        <div class="footer py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <a class="footer-link" href="#">Register</a>
+                        <a class="footer-link" href="#">Forum</a>
+                        <a class="footer-link" href="#">Affiliate</a>
+                        <a class="footer-link" href="#">FAQ</a>
+                        <div class="footer-social pt-4 text-center">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-dribbble"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="footer-copy">
+                            <div class="copy-right text-center pt-5">
+                                <p class="text-light">© 2021. FitAthelete. All rights reserved.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script>
+
+
+                // // active navbar
+                // let nav = document.querySelector(".navigation-wrap");
+                // window.onscroll = function () {
+                //     if (document.documentElement.scrollTop > 20) {
+                //         nav.classList.add("scroll-on");
+                //     } else {
+                //         nav.classList.remove("scroll-on");
+                //     }
+                // }
+
+                // nav hide 
+                let navBar = document.querySelectorAll('.nav-link');
+                let navCollapse = document.querySelector('.navbar-collapse.collapse');
+                navBar.forEach(function (a) {
+                    a.addEventListener("click", function () {
+                        navCollapse.classList.remove("show");
+                    })
+                })
+
+                // counter design
+                document.addEventListener("DOMContentLoaded", () => {
+                    function counter(id, start, end, duration) {
+                        let obj = document.getElementById(id),
+                            current = start,
+                            range = end - start,
+                            increment = end > start ? 1 : -1,
+                            step = Math.abs(Math.floor(duration / range)),
+                            timer = setInterval(() => {
+                                current += increment;
+                                obj.textContent = current;
+                                if (current == end) {
+                                    clearInterval(timer);
+                                }
+                            }, step);
+                    }
+                    counter("count1", 0, 1287, 3000);
+                    counter("count2", 100, 5786, 2500);
+                    counter("count3", 0, 1440, 3000);
+                    counter("count4", 0, 7110, 3000);
+                });
+
+
+
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
